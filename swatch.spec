@@ -1,40 +1,46 @@
-Summary: A utility for monitoring system logs files.
-Name: swatch
-Version: 2.2
-Release: 7
-Copyright: Distributable
-Group: Applications/System
-Source: ftp://ftp.stanford.edu/general/security-tools/swatch/swatch-2.2.tar.gz
-Patch0: swatch-2.2-redhat.patch
-BuildArchitectures: noarch
+Summary:	A utility for monitoring system logs files
+Name:		swatch
+Version:	3.0.1
+Release:	1
+License:	Distributable
+Group:		Applications/System
+Group(de):	Applikationen/System
+Group(pl):	Aplikacje/System
+Source0:	ftp://ftp.stanford.edu/general/security-tools/swatch/%{name}-%{version}.tar.gz
+BuildRequires:	perl-Time-HiRes >= 1.12
+BuildRequires:	perl-Date-Calc
+BuildRequires:	perl-File-Tail
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The Swatch utility monitors system log files, filters out unwanted data
-and takes specified actions (i.e., sending email, executing a script,
-etc.) based upon what it finds in the log files.
+The Swatch utility monitors system log files, filters out unwanted
+data and takes specified actions (i.e., sending email, executing a
+script, etc.) based upon what it finds in the log files.
 
 Install the swatch package if you need a program that will monitor log
 files and alert you in certain situations.
 
 %prep
 %setup -q
-%patch0 -p1 -b .redhat
+
+%build
+perl Makefile.PL
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/{bin,lib,man/man5,man/man8}
 
-perl install.pl
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+gzip -9nf CHANGES COPYRIGHT KNOWN_BUGS README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-,root,root)
-/usr/bin/swatch
-/usr/lib/sw_actions.pl
-/usr/lib/sw_history.pl
-/usr/man/man5/swatch.5
-/usr/man/man8/swatch.8
-%doc *.ps config_files README Changes
+%defattr(644,root,root,755)
+%doc *.gz
+%attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/*
