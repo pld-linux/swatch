@@ -3,7 +3,7 @@ Summary:	A utility for monitoring system logs files
 Summary(pl):	Narzêdzie do monitorowania logów systemowych
 Name:		swatch
 Version:	3.0.4
-Release:	1
+Release:	2
 License:	distributable
 Group:		Applications/System
 Source0:	ftp://ftp.stanford.edu/general/security-tools/swatch/%{name}-%{version}.tar.gz
@@ -40,13 +40,11 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf CHANGES COPYRIGHT KNOWN_BUGS README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc CHANGES COPYRIGHT KNOWN_BUGS README
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
