@@ -1,5 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	A utility for monitoring system logs files
+Summary(pl):	Narzêdzie do monitorowania logów systemowych
 Name:		swatch
 Version:	3.0.2
 Release:	1
@@ -22,6 +23,11 @@ script, etc.) based upon what it finds in the log files.
 
 Install the swatch package if you need a program that will monitor log
 files and alert you in certain situations.
+
+%description -l pl
+Swatch monitoruje pliki logów systemowych, odfiltrowuje niechciane
+dane i wykonuje okre¶lone akcje (np. wysy³anie maila, wykonanie
+skryptu itp.) w zalezno¶ci od zawarto¶ci logów.
 
 %prep
 %setup -q
