@@ -2,12 +2,12 @@
 Summary:	A utility for monitoring system logs files
 Summary(pl):	Narzêdzie do monitorowania logów systemowych
 Name:		swatch
-Version:	3.0.4
+Version:	3.1.1
 Release:	2
 License:	distributable
 Group:		Applications/System
-Source0:	ftp://ftp.stanford.edu/general/security-tools/swatch/%{name}-%{version}.tar.gz
-# Source0-md5:	ce290dd2cae6ce834f59e24d97a30d3b
+Source0:	http://dl.sourceforge.net/swatch/swatch-3.1.1.tar.gz
+# Source0-md5:	fe38cc8d073e692a7426693837c3749d
 BuildRequires:	perl-Time-HiRes >= 1.12
 BuildRequires:	perl-Date-Calc
 BuildRequires:	perl-File-Tail
@@ -32,7 +32,8 @@ skryptu itp.) w zalezno¶ci od zawarto¶ci logów.
 %setup -q
 
 %build
-perl Makefile.PL
+%{__perl} Makefile.PL \
+        INSTALLDIRS=vendor
 %{__make}
 
 %install
@@ -49,3 +50,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGES COPYRIGHT KNOWN_BUGS README
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
+%{_mandir}/man3/*
+%{perl_vendorlib}/Swatch/*
+%{perl_vendorlib}/auto/Swatch/Actions/autosplit.ix
