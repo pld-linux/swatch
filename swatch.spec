@@ -4,7 +4,7 @@ Summary(pl):	Narzêdzie do monitorowania logów systemowych
 Name:		swatch
 Version:	3.0.3
 Release:	1
-License:	Distributable
+License:	distributable
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
