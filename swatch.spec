@@ -7,7 +7,7 @@ Group: Applications/System
 Source: ftp://ftp.stanford.edu/general/security-tools/swatch/swatch-2.2.tar.gz
 Patch0: swatch-2.2-redhat.patch
 BuildArchitectures: noarch
-BuildRoot: /var/tmp/swatch-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The Swatch utility monitors system log files, filters out unwanted data
