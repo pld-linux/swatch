@@ -2,7 +2,7 @@
 Summary:	A utility for monitoring system logs files
 Summary(pl):	Narzêdzie do monitorowania logów systemowych
 Name:		swatch
-Version:	3.0.2
+Version:	3.0.3
 Release:	1
 License:	Distributable
 Group:		Applications/System
