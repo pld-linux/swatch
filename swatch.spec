@@ -8,6 +8,7 @@ License:	distributable
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/swatch/%{name}-%{version}.tar.gz
 # Source0-md5:	fe38cc8d073e692a7426693837c3749d
+URL:		http://swatch.sourceforge.net/
 BuildRequires:	perl-Time-HiRes >= 1.12
 BuildRequires:	perl-Date-Calc
 BuildRequires:	perl-File-Tail
