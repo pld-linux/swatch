@@ -1,3 +1,4 @@
+%include	/usr/lib/rpm/macros.perl
 Summary:	A utility for monitoring system logs files
 Name:		swatch
 Version:	3.0.1
