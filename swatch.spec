@@ -27,7 +27,7 @@ files and alert you in certain situations.
 %description -l pl
 Swatch monitoruje pliki logów systemowych, odfiltrowuje niechciane
 dane i wykonuje okre¶lone akcje (np. wysy³anie maila, wykonanie
-skryptu itp.) w zalezno¶ci od zawarto¶ci logów.
+skryptu itp.) w zale¿no¶ci od zawarto¶ci logów.
 
 %prep
 %setup -q
