@@ -10,6 +10,7 @@ Source0:	ftp://ftp.stanford.edu/general/security-tools/swatch/%{name}-%{version}
 BuildRequires:	perl-Time-HiRes >= 1.12
 BuildRequires:	perl-Date-Calc
 BuildRequires:	perl-File-Tail
+BuildRequires:	perl-TimeDate
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
