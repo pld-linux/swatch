@@ -34,7 +34,7 @@ skryptu itp.) w zale¿no¶ci od zawarto¶ci logów.
 
 %build
 %{__perl} Makefile.PL \
-        INSTALLDIRS=vendor
+	INSTALLDIRS=vendor
 %{__make}
 
 %install
