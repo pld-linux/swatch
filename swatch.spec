@@ -6,7 +6,7 @@ Version:	3.1.1
 Release:	2
 License:	distributable
 Group:		Applications/System
-Source0:	http://dl.sourceforge.net/swatch/swatch-3.1.1.tar.gz
+Source0:	http://dl.sourceforge.net/swatch/%{name}-%{version}.tar.gz
 # Source0-md5:	fe38cc8d073e692a7426693837c3749d
 BuildRequires:	perl-Time-HiRes >= 1.12
 BuildRequires:	perl-Date-Calc
@@ -51,5 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %{_mandir}/man3/*
-%{perl_vendorlib}/Swatch/*
+%{perl_vendorlib}/Swatch
+%dir %{perl_vendorlib}/auto/Swatch
+%dir %{perl_vendorlib}/auto/Swatch/Actions
 %{perl_vendorlib}/auto/Swatch/Actions/autosplit.ix
