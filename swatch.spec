@@ -6,8 +6,6 @@ Version:	3.0.4
 Release:	1
 License:	distributable
 Group:		Applications/System
-Group(de):	Applikationen/System
-Group(pl):	Aplikacje/System
 Source0:	ftp://ftp.stanford.edu/general/security-tools/swatch/%{name}-%{version}.tar.gz
 BuildRequires:	perl-Time-HiRes >= 1.12
 BuildRequires:	perl-Date-Calc
