@@ -7,6 +7,7 @@ Release:	2
 License:	distributable
 Group:		Applications/System
 Source0:	ftp://ftp.stanford.edu/general/security-tools/swatch/%{name}-%{version}.tar.gz
+# Source0-md5:	ce290dd2cae6ce834f59e24d97a30d3b
 BuildRequires:	perl-Time-HiRes >= 1.12
 BuildRequires:	perl-Date-Calc
 BuildRequires:	perl-File-Tail
