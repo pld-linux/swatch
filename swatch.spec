@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	autodeps	# don't BR packages needed only for resolving deps
+#
 %include	/usr/lib/rpm/macros.perl
 Summary:	A utility for monitoring system logs files
 Summary(pl):	Narzêdzie do monitorowania logów systemowych
@@ -10,11 +14,16 @@ Source0:	http://dl.sourceforge.net/swatch/%{name}-%{version}.tar.gz
 Source1:	%{name}rc
 # Source0-md5:	e55db93ef6250d684a56104fd03b8821
 URL:		http://swatch.sourceforge.net/
-BuildRequires:	perl-Time-HiRes >= 1.12
+BuildRequires:	perl-base
+BuildRequires:	perl-devel
+BuildRequires:	rpm-perlprov
+%if %{with autodeps}
 BuildRequires:	perl-Date-Calc
+BuildRequires:	perl-Date-Manip
 BuildRequires:	perl-File-Tail
+BuildRequires:	perl-Time-HiRes >= 1.12
 BuildRequires:	perl-TimeDate
-Requires:	perl-Date-Manip
+%endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,12 +50,13 @@ skryptu itp.) w zale¿no¶ci od zawarto¶ci logów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-install %{SOURCE1} examples
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+rm -f $RPM_BUILD_ROOT{%{perl_archlib}/perllocal.pod,%{perl_vendorarch}/auto/swatch/.packlist}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,3 +71,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorlib}/auto/Swatch
 %dir %{perl_vendorlib}/auto/Swatch/Actions
 %{perl_vendorlib}/auto/Swatch/Actions/autosplit.ix
+%{_examplesdir}/%{name}-%{version}
