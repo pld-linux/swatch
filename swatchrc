@@ -1,0 +1,86 @@
+#
+# Swatch configuration file for constant monitoring
+#
+
+watchfor   /Sense Key: Media Error/
+	echo
+	exec echo $0 | mail -s\"syslog alert: disk errors\" root
+        throttle 30:00
+
+# disk errors
+watchfor   /needs maintenance/
+	echo
+	exec echo $0 | mail root\@auckland.ac.nz
+	exec echo $0 | mail -s\"syslog alert: DISK ERRORS\" root
+        throttle 30:00
+
+# disk errors
+watchfor   /write error/
+	echo
+	exec echo $0 | mail root\@auckland.ac.nz
+	exec echo $0 | mail -s\"syslog alert: DISK ERRORS\" root
+        throttle 30:00
+
+# disk errors
+watchfor   /out of inodes/
+	echo
+	exec echo $0 | mail root
+	exec echo $0 | mail -s\"syslog alert: out of inodes\" root
+        throttle 30:00
+
+# disk troubles logged by apache
+watchfor   /No space left on device/
+	echo
+	exec echo $0 | mail root
+	exec echo $0 | mail -s\"Disk space troubles on the following systems, please investigate\" root
+        throttle 30:00
+
+# power supply errors on routers/switches
+watchfor   /PSFAIL/
+	echo
+	exec echo $0 |mail root
+	exec echo $0 |mail -s \"Power Supply Failed\" root
+	throttle 30:00
+
+# memory errors on sun boxen
+watchfor   /no swap space/
+        echo
+	exec echo $0 | mail root
+	exec echo $0 | mail -s\"Running out of swap space on the following systems, please investigate\" root
+        throttle 30:00
+
+# Full filesystems on Sun Boxes
+watchfor   /file system full/
+        echo
+	exec echo $0 | mail root
+	exec echo $0 | mail root
+	throttle 30:00
+
+# Postbox Too many FS descriptors open
+watchfor   /Too many open files in system/
+        echo
+	exec echo $0 | mail root
+	exec echo $0 | mail -s\"Out of files on Server, please reboot\" root
+        throttle 30:00
+
+# BIND zone errors
+watchfor   /rejected due to errors/
+        echo
+	exec echo $0 | mail -s\"Some fool fubar'd a zone file\" root
+        throttle 30:00
+
+# This alerts on failed su attempts. This can get annoying if you have a lot
+# of boxes and users.
+
+watchfor   /\'su root\' failed/
+        echo bold
+        exec echo $0 | mail -s\"security alert, someone trying to su to root\" root
+        throttle 30:00
+
+# This alerts on suspicious network packets on Sun Boxes.
+watchfor    /ip_fanout_tcp_listen/
+        echo
+        exec echo $0 | mail -s\"Suspicious network packets\" root
+        throttle 30:00
+
+
