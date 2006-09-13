@@ -7,6 +7,7 @@ Release:	1
 License:	distributable
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/swatch/%{name}-%{version}.tar.gz
+Source1:	%{name}rc
 # Source0-md5:	e55db93ef6250d684a56104fd03b8821
 URL:		http://swatch.sourceforge.net/
 BuildRequires:	perl-Time-HiRes >= 1.12
@@ -41,8 +42,11 @@ skryptu itp.) w zale¿no¶ci od zawarto¶ci logów.
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install %{SOURCE1} examples
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
