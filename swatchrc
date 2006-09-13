@@ -10,7 +10,7 @@ watchfor   /Sense Key: Media Error/
 # disk errors
 watchfor   /needs maintenance/
 	echo
-	exec echo $0 | mail root\@auckland.ac.nz
+	exec echo $0 | mail root
 	exec echo $0 | mail -s\"syslog alert: DISK ERRORS\" root
         throttle 30:00
 
