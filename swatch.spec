@@ -11,8 +11,8 @@ Release:	1
 License:	distributable
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/swatch/%{name}-%{version}.tar.gz
-Source1:	%{name}rc
 # Source0-md5:	e55db93ef6250d684a56104fd03b8821
+Source1:	%{name}rc
 URL:		http://swatch.sourceforge.net/
 BuildRequires:	perl-base
 BuildRequires:	perl-devel
