@@ -6,12 +6,12 @@
 Summary:	A utility for monitoring system logs files
 Summary(pl.UTF-8):	Narzędzie do monitorowania logów systemowych
 Name:		swatch
-Version:	3.2.2
+Version:	3.2.3
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/swatch/%{name}-%{version}.tar.gz
-# Source0-md5:	b7d360b01da8168b4b7d4cf45c263f55
+# Source0-md5:	1162f1024cf07fc750ed4960d61ac4e8
 Source1:	%{name}rc
 URL:		http://swatch.sourceforge.net/
 BuildRequires:	perl-base
