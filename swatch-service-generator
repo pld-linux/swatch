@@ -1,0 +1,21 @@
+#!/bin/sh
+
+destunitdir=${1:-/tmp}
+
+# Do nothing if target is disabled
+[ -e /etc/systemd/system/multi-user.target.wants/swatch.target ] || exit 0
+
+[ -f /etc/sysconfig/swatch ] && . /etc/sysconfig/swatch
+
+if [ -d $destunitdir/swatch.target.wants ]; then
+	rm -f $destunitdir/swatch.target.wants/swatch@*.service
+else
+	mkdir -p $destunitdir/swatch.target.wants
+fi
+
+for name in $INSTANCES; do
+	[ -L $destunitdir/swatch.target.wants/swatch@name.service ] && \
+		continue
+	ln -s /lib/systemd/system/swatch@.service \
+		$destunitdir/swatch.target.wants/swatch@name.service
+done

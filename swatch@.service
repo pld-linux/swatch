@@ -1,0 +1,16 @@
+[Unit]
+Description=Swatch instance %I
+Requires=swatch.target
+After=swatch.target
+
+[Service]
+Type=simple
+Environment="RC_FILE=/etc/swatch/%i.rc" "PRESTART_EXEC=/etc/swatch/%i.prestart" "POSTSTOP_EXEC=/etc/swatch/%i.poststop"
+EnvironmentFile=/etc/swatch/%i.conf
+ExecStartPre=/bin/sh -c '[ ! -e ${PRESTART_EXEC} ] && exit 0; ${PRESTART_EXEC}'
+ExecStopPost=/bin/sh -c '[ ! -e ${POSTSTOP_EXEC} ] && exit 0; ${POSTSTOP_EXEC}'
+ExecStart=/usr/bin/swatch --config-file ${RC_FILE} $SWATCH_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=swatch.target

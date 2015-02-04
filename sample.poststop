@@ -1,0 +1,11 @@
+#!/bin/sh
+# This file is run after a swatch instance stops. If you need a place to put
+# cleanup code, this file is it.
+# Existence of this file is optional. If it doesn't exist, executing it won't
+# be attempted.
+# However if it does exist, it needs to be a proper executable file (+x set)
+# and it needs to exit without errors. If it exits with errors, systemd
+# will treat this as an error.
+
+logger "poststop run"
+
