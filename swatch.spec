@@ -89,9 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 %{systemdunitdir}/%{name}.target
 %{systemdunitdir}/%{name}@.service
 %attr(770,root,root) %dir %{_sysconfdir}/%{name}
-%{_sysconfdir}/%{name}/sample.conf
-%{_sysconfdir}/%{name}/sample.rc
-%attr(755,root,root) %{_sysconfdir}/%{name}/sample.p*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/sample.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/sample.rc
+%config(noreplace) %verify(not md5 mtime size) %attr(755,root,root) %{_sysconfdir}/%{name}/sample.p*
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %{_mandir}/man3/*
