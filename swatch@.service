@@ -5,6 +5,7 @@ After=swatch.target
 
 [Service]
 Type=simple
+Restart=on-failure
 PrivateTmp=true
 Environment="RC_FILE=/etc/swatch/%i.rc" "PRESTART_EXEC=/etc/swatch/%i.prestart" "POSTSTOP_EXEC=/etc/swatch/%i.poststop"
 EnvironmentFile=/etc/swatch/%i.conf
