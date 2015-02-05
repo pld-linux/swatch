@@ -83,6 +83,19 @@ rm -f $RPM_BUILD_ROOT{%{perl_archlib}/perllocal.pod,%{perl_vendorarch}/auto/swat
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%service swatch restart
+%systemd_post swatch.target
+
+%preun
+if [ "$1" = "0" ]; then
+    %service swatch stop
+fi
+%systemd_preun swatch.target
+
+%postun
+%systemd_reload
+
 %files
 %defattr(644,root,root,755)
 %doc CHANGES COPYRIGHT KNOWN_BUGS README examples
