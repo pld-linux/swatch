@@ -5,11 +5,12 @@ After=swatch.target
 
 [Service]
 Type=simple
+PrivateTmp=true
 Environment="RC_FILE=/etc/swatch/%i.rc" "PRESTART_EXEC=/etc/swatch/%i.prestart" "POSTSTOP_EXEC=/etc/swatch/%i.poststop"
 EnvironmentFile=/etc/swatch/%i.conf
 ExecStartPre=/bin/sh -c '[ ! -e ${PRESTART_EXEC} ] && exit 0; ${PRESTART_EXEC}'
 ExecStopPost=/bin/sh -c '[ ! -e ${POSTSTOP_EXEC} ] && exit 0; ${POSTSTOP_EXEC}'
-ExecStart=/usr/bin/swatch --config-file ${RC_FILE} $SWATCH_OPTS
+ExecStart=/usr/bin/swatch --script-dir /tmp --config-file ${RC_FILE} $SWATCH_OPTS
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
