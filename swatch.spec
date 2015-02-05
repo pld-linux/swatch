@@ -20,6 +20,7 @@ Source5:    swatch.sysconfig
 Source6:    swatch-service-generator
 Source7:    swatch.target
 Source8:    swatch@.service
+Patch0:     fix_echo.patch
 URL:		http://swatch.sourceforge.net/
 BuildRequires:	perl-base
 BuildRequires:	perl-devel
@@ -49,6 +50,7 @@ skryptu itp.) w zależności od zawartości logów.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__perl} Makefile.PL \

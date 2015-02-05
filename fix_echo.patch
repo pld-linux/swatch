@@ -1,0 +1,12 @@
+diff -urN swatch-3.2.3.orig/lib/Swatch/Actions.pm swatch-3.2.3/lib/Swatch/Actions.pm
+--- swatch-3.2.3.orig/lib/Swatch/Actions.pm	2006-05-02 21:17:42.000000000 +0000
++++ swatch-3.2.3/lib/Swatch/Actions.pm	2015-02-05 10:10:05.562036582 +0000
+@@ -62,7 +62,7 @@
+ 	     and $args{'THRESHOLDING'} eq 'on'
+ 	     and not &Swatch::Threshold::threshold(%args));
+   
+-  if (${$args{'MODES'}}[0] =~ /^normal$/i) { # for backward compatability
++  if (${$args{'MODES'}}[0] =~ /^normal$|^$/i) { # for backward compatability
+     print "$args{'MESSAGE'}\n";
+   } else {
+     print colored("$args{'MESSAGE'}\n", @{$args{'MODES'}});
