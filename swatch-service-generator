@@ -14,8 +14,8 @@ else
 fi
 
 for name in $INSTANCES; do
-	[ -L $destunitdir/swatch.target.wants/swatch@name.service ] && \
+	[ -L $destunitdir/swatch.target.wants/swatch@${name}.service ] && \
 		continue
 	ln -s /lib/systemd/system/swatch@.service \
-		$destunitdir/swatch.target.wants/swatch@name.service
+		$destunitdir/swatch.target.wants/swatch@${name}.service
 done
